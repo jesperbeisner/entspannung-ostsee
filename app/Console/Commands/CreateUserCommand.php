@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Factories\Models\UserFactory;
-use App\Repositories\UserRepository;
+use App\Exceptions\RuntimeException;
+use App\Services\UserService;
 use Illuminate\Console\Command;
 
 final class CreateUserCommand extends Command
@@ -14,22 +14,18 @@ final class CreateUserCommand extends Command
 
     protected $description = 'Creates a new user';
 
-    public function handle(UserRepository $userRepository): int
+    public function handle(UserService $userService): int
     {
         $email = $this->argument('email');
         $password = $this->argument('password');
 
-        $user = $userRepository->findByEmail($email);
-
-        if ($user !== null) {
-            $this->error(sprintf('A user with email "%s" already exists!', $email));
+        try {
+            $userService->create($email, $password);
+        } catch (RuntimeException $e) {
+            $this->error($e->getMessage());
 
             return Command::FAILURE;
         }
-
-        $user = UserFactory::create($email, $password);
-
-        $userRepository->save($user);
 
         $this->info(sprintf('A new user with email "%s" was successful created.', $email));
 
