@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ isset($title) ? $title . ' - www.entspannung-ostsee.de' : 'www.entspannung-ostsee.de' }}</title>
+
+    @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-amber-50">
     {{ $slot }}
 </body>
 </html>
