@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
+use App\Actions\CreateUserAction;
 use App\Exceptions\RuntimeException;
-use App\Services\UserService;
 use Illuminate\Console\Command;
 
 final class CreateUserCommand extends Command
@@ -14,13 +14,13 @@ final class CreateUserCommand extends Command
 
     protected $description = 'Creates a new user';
 
-    public function handle(UserService $userService): int
+    public function handle(CreateUserAction $createUserAction): int
     {
         $email = $this->argument('email');
         $password = $this->argument('password');
 
         try {
-            $userService->create($email, $password);
+            $createUserAction->create($email, $password);
         } catch (RuntimeException $e) {
             $this->error($e->getMessage());
 

@@ -15,6 +15,8 @@ final class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(Repositories\UserRepository::class);
 
+        $this->app->bind(Interfaces\AuthServiceInterface::class, Services\AuthService::class, true);
         $this->app->bind(Interfaces\PasswordServiceInterface::class, Services\PasswordService::class, true);
+        $this->app->bind(Interfaces\UserServiceInterface::class, Services\UserService::class, true);
     }
 }

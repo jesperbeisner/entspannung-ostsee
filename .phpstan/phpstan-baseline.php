@@ -17,6 +17,11 @@ $ignoreErrors[] = [
 	'path' => __DIR__ . '/../app/Repositories/AbstractRepository.php',
 ];
 $ignoreErrors[] = [
+	'message' => '#^Unreachable statement \\- code above always terminates\\.$#',
+	'count' => 1,
+	'path' => __DIR__ . '/../app/Services/UserService.php',
+];
+$ignoreErrors[] = [
 	'message' => '#^Parameter \\#1 \\$title of static method Illuminate\\\\Support\\\\Str\\:\\:slug\\(\\) expects string, mixed given\\.$#',
 	'count' => 1,
 	'path' => __DIR__ . '/../config/cache.php',

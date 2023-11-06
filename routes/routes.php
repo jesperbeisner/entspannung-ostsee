@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Controllers\IndexController::class, 'index'])->name('index');
 
-Route::addRoute(['GET', 'POST'], '/login', [Controllers\AuthController::class, 'login'])->name('login');
+Route::get('/login', [Controllers\AuthController::class, 'index'])->name('login');
+Route::post('/login', [Controllers\AuthController::class, 'execute'])->name('login.execute');
+
 Route::addRoute(['GET', 'POST'], '/logout', [Controllers\AuthController::class, 'logout'])->name('logout');
 
 Route::group(['middleware' => [Middleware\Authenticate::class]], function () {
