@@ -1,0 +1,56 @@
+name: "CI/CD"
+
+on:
+    push:
+        branches:
+            - master
+            - develop
+    pull_request:
+        branches:
+            - master
+            - develop
+
+jobs:
+    qa:
+        name: "QA"
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: "Checkout"
+                uses: actions/checkout@v4
+
+            -   name: "Setup PHP"
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: "8.2"
+                    ini-values: "memory_limit=-1"
+                    tools: composer
+
+            -   name: "Setup npm"
+                uses: actions/setup-node@v3
+                with:
+                    node-version: 20
+
+            -   name: "Setup .env"
+                run: mv .env.example .env
+
+            -   name: "Install npm dependencies"
+                run: npm clean-install
+
+            -   name: "Build npm dependencies"
+                run: npm run build
+
+            -   name: "Install composer dependencies"
+                run: composer install
+
+            -   name: "Generate app key"
+                run: php artisan key:generate
+
+            -   name: "Run PHP-CS-Fixer"
+                run: vendor/bin/php-cs-fixer fix --diff --verbose
+
+            -   name: "Run PHPStan"
+                run: vendor/bin/phpstan analyze
+
+            -   name: "Run PHPUnit"
+                run: vendor/bin/phpunit
