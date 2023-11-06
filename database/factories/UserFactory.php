@@ -19,7 +19,7 @@ final class UserFactory extends Factory
         return [
             'id' => Uuid::uuid7()->toString(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('password'),
+            'password' => Hash::make('Password12345'),
         ];
     }
 }
