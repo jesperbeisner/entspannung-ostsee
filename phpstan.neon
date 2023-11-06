@@ -6,6 +6,7 @@ parameters:
         - tests
         - database
         - config
+        - routes
         - public
         - bootstrap
 

@@ -4,18 +4,19 @@ declare(strict_types=1);
 
 namespace Tests\Feature;
 
-// use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class ExampleTest extends TestCase
+final class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     */
+    use RefreshDatabase;
+
     public function testTheApplicationReturnsASuccessfulResponse(): void
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $this
+            ->get(route('index.index'))
+            ->assertStatus(Response::HTTP_OK)
+        ;
     }
 }

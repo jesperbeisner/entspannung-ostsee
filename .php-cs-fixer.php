@@ -8,6 +8,7 @@ $finder = (new PhpCsFixer\Finder())
         __DIR__ . '/tests',
         __DIR__ . '/database',
         __DIR__ . '/config',
+        __DIR__ . '/routes',
         __DIR__ . '/public',
         __DIR__ . '/bootstrap',
     ])
