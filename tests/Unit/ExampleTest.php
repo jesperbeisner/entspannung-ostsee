@@ -10,6 +10,6 @@ final class ExampleTest extends TestCase
 {
     public function testThatTrueIsTrue(): void
     {
-        $this->assertTrue(true);
+        $this->assertSame(1, rand(0, 1));
     }
 }

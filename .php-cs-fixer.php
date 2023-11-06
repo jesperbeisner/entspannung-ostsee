@@ -10,7 +10,9 @@ $finder = (new PhpCsFixer\Finder())
         __DIR__ . '/config',
         __DIR__ . '/routes',
         __DIR__ . '/public',
-        __DIR__ . '/bootstrap',
+    ])
+    ->name([
+        __DIR__ . '/bootstrap/app.php',
     ])
 ;
 

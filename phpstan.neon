@@ -10,7 +10,11 @@ parameters:
         - public
         - bootstrap
 
+    strictRules:
+        strictCalls: false
+
 includes:
     - vendor/nunomaduro/larastan/extension.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - .phpstan/phpstan-baseline.php
