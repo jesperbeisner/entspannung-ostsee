@@ -1,1 +1,5 @@
-<h1>Hello World from AuthController</h1>
+<x-layout>
+    <x-slot:title>Login</x-slot:title>
+
+    Hello from AuthController
+</x-layout>

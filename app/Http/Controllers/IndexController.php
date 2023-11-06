@@ -10,6 +10,6 @@ final class IndexController extends AbstractController
 {
     public function index(): View
     {
-        return view('welcome');
+        return view('index');
     }
 }

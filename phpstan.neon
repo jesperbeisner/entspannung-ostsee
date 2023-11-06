@@ -9,6 +9,7 @@ parameters:
         - routes
         - public
         - bootstrap
+        - lang
 
     strictRules:
         strictCalls: false

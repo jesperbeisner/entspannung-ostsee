@@ -1,1 +1,5 @@
-<h1>Hello World from AdminController</h1>
+<x-layout>
+    <x-slot:title>Admin</x-slot:title>
+
+    Hello from AdminController
+</x-layout>
