@@ -12,4 +12,19 @@ final class IndexController extends AbstractController
     {
         return view('index');
     }
+
+    public function imprint(): View
+    {
+        return view('imprint');
+    }
+
+    public function agbs(): View
+    {
+        return view('agbs');
+    }
+
+    public function dataProtection(): View
+    {
+        return view('data-protection');
+    }
 }

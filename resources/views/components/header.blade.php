@@ -1,4 +1,4 @@
-<header class="flex justify-center w-full border-b shadow-sm bg-blue-50 py-2">
+<header class="flex justify-center w-full border-b border-blue-200 bg-blue-50 py-2 shadow-[0_5px_6px_-1px_rgba(0,0,0,0.1)]">
     <div class="flex flex-col w-full md:max-w-screen-md">
         <div class="flex flex-col items-center mb-3">
             <a href="{{ route('index') }}">
