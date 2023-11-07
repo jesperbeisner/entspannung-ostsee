@@ -31,7 +31,7 @@ final class AuthController extends AbstractController
     {
         $this->authService->login($loginRequest->getValidatedUser());
 
-        return to_route('index');
+        return to_route('admin.index');
     }
 
     public function logout(): RedirectResponse

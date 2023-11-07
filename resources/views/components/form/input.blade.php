@@ -1,12 +1,16 @@
-@props(['type', 'id', 'description'])
-<label for="{{ $id }}"
-       class="text-gray-700"
->
+@props(['type', 'id', 'description', 'value' => null, 'placeholder' => null])
+<label for="{{ $id }}" class="text-gray-700">
     {{ $description }}
 </label>
 
 <input type="{{ $type }}"
        id="{{ $id }}"
        name="{{ $id }}"
-       class="bg-gray-50 block w-full rounded-md border-gray-300 shadow-sm focus:bg-white focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+       class="block w-full rounded-md bg-gray-50 @error($id) border-red-300 @else border-gray-300 @enderror focus:border-indigo-400 focus:ring-indigo-200 focus:ring-2"
+       @if($value !== null) value="{{ $value }}" @endif
+       @if($placeholder !== null) placeholder="{{ $placeholder }}" @endif
 >
+
+@error($id)
+    <small class="text-red-500">{{ $message }}</small>
+@enderror

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="TODO: Etwas hinschreiben...">
 
-    <title>{{ isset($title) ? $title . ' - www.entspannung-ostsee.de' : 'www.entspannung-ostsee.de' }}</title>
+    <title>{{ isset($title) ? $title . ' - Entspannung Ostsee' : 'Entspannung Ostsee' }}</title>
 
     @vite('resources/css/app.css')
 </head>

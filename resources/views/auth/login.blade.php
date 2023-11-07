@@ -8,29 +8,13 @@
                     @csrf
 
                     <div class="mb-5">
-                        <label for="email">E-Mail</label>
-                        <input type="text"
-                               id="email"
-                               name="email"
-                               class="block w-full rounded-md bg-gray-50 @error('email') border-red-300 @else border-gray-300 @enderror focus:border-indigo-400 focus:ring-indigo-200 focus:ring-2"
-                               @if(app()->environment('local') === true) value="test@example.com" @endif
-                        >
-                        @error('email')
-                            <small class="text-red-500">{{ $message }}</small>
-                        @enderror
+                        @php $value = app()->environment('local') === true ? 'test@example.com' : old('email') @endphp
+                        <x-form.input type="text" id="email" description="E-Mail" :value="$value"/>
                     </div>
 
                     <div class="mb-5">
-                        <label for="password">Passwort</label>
-                        <input type="password"
-                               id="password"
-                               name="password"
-                               class="block w-full rounded-md bg-gray-50 @error('password') border-red-300 @else border-gray-300 @enderror focus:border-indigo-400 focus:ring-indigo-200 focus:ring-2"
-                               @if(app()->environment('local') === true) value="Password12345" @endif
-                        >
-                        @error('password')
-                            <small class="text-red-500">{{ $message }}</small>
-                        @enderror
+                        @php $value = app()->environment('local') === true ? 'Password12345' : null @endphp
+                        <x-form.input type="password" id="password" description="Passwort" :value="$value"/>
                     </div>
 
                     <div>

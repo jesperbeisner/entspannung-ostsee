@@ -27,3 +27,6 @@ phpstan-baseline: ## Generate PHPStan Baseline
 
 reset-db: ## Reset the database
 	docker compose exec php php -d memory_limit=-1 -d xdebug.mode=off artisan migrate:fresh --seed
+
+watch: ## npm run dev
+	docker compose exec php npm run dev
