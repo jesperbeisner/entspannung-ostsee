@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Impressum</x-slot:title>
 
-    <h1 class="text-2xl mt-2 mb-5 text-gray-700">Impressum</h1>
+    <h1 class="text-3xl md:text-4xl mt-2 mb-5 text-gray-700">Impressum</h1>
 
     <div class="prose mb-3">
         <p class="font-bold m-0">Angaben gemäß § 5 TMG:</p>

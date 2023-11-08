@@ -14,16 +14,16 @@
         <nav class="flex justify-center">
             <div class="flex flex-col items-center gap-2 sm:gap-4 sm:flex-row">
                 <ul class="flex gap-4 flex-row text-sm sm:text-base md:flex-row">
-                    <li><a href="/" class="link">Home</a></li>
-                    <li><a href="/" class="link">Über</a></li>
-                    <li><a href="/" class="link">Kurse</a></li>
-                    <li><a href="/" class="link">Blog</a></li>
+                    <li><a href="{{ route('index') }}" class="link">Home</a></li>
+                    <li><a href="{{ route('about') }}" class="link">Über</a></li>
+                    <li><a href="{{ route('course') }}" class="link">Kurse</a></li>
+                    <li><a href="{{ route('blog') }}" class="link">Blog</a></li>
                 </ul>
                 <ul class="flex gap-4 flex-row text-sm sm:text-base md:flex-row">
-                    <li><a href="/" class="link">Vorträge</a></li>
-                    <li><a href="/" class="link">Beratung</a></li>
-                    <li><a href="/" class="link">Klangmassage</a></li>
-                    <li><a href="/" class="link">Kontakt</a></li>
+                    <li><a href="{{ route('lectures') }}" class="link">Vorträge</a></li>
+                    <li><a href="{{ route('consulting') }}" class="link">Beratung</a></li>
+                    <li><a href="{{ route('sound-massage') }}" class="link">Klangmassage</a></li>
+                    <li><a href="{{ route('contact') }}" class="link">Kontakt</a></li>
                 </ul>
             </div>
         </nav>

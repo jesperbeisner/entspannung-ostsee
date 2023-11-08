@@ -13,6 +13,26 @@ final class IndexController extends AbstractController
         return view('index');
     }
 
+    public function about(): View
+    {
+        return view('index');
+    }
+
+    public function lectures(): View
+    {
+        return view('index');
+    }
+
+    public function consulting(): View
+    {
+        return view('index');
+    }
+
+    public function soundMassage(): View
+    {
+        return view('index');
+    }
+
     public function imprint(): View
     {
         return view('imprint');

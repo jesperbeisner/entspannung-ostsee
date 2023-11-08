@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Datenschutz</x-slot:title>
 
-    <h1 class="text-2xl mt-2 mb-5 text-gray-700">Datenschutz</h1>
+    <h1 class="text-3xl md:text-4xl mt-2 mb-5 text-gray-700">Datenschutz</h1>
 
     <div class="prose mb-3">
         <p class="font-bold m-0">Verantwortlicher für die Datenverarbeitung ist:</p>
