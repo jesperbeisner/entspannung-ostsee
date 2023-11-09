@@ -1,7 +1,7 @@
 <x-layout>
     <x-slot:title>Home</x-slot:title>
 
-    <div class="flex justify-center md:my-3">
+    <div class="flex justify-center md:mb-3">
         <img class="h-auto w-auto sm:max-w-sm md:max-w-md rounded shadow-xl" width="780" height="647" src="{{ asset('img/iris-bohn.png')}} " alt="Profilbild von Iris Bohn">
     </div>
 

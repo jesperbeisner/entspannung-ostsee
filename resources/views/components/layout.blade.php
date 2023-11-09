@@ -12,8 +12,10 @@
 <body class="flex flex-col bg-amber-50 w-full">
     @include('components.header')
 
+    @include('components.flash-messages')
+
     <main class="flex justify-center flex-1 w-full">
-        <div class="w-full md:max-w-screen-md my-2 px-2 md:px-0">
+        <div class="w-full md:max-w-screen-md px-2 md:px-0">
             {{ $slot }}
         </div>
     </main>
