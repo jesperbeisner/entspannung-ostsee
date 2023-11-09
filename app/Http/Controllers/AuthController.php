@@ -10,6 +10,9 @@ use App\Interfaces\UserServiceInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
+/**
+ * @see \Tests\Feature\Http\Controllers\AuthControllerTest
+ */
 final class AuthController extends AbstractController
 {
     public function __construct(

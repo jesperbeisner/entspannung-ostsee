@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 
+/**
+ * @see \Tests\Feature\Http\Controllers\AdminControllerTest
+ */
 final class AdminController extends AbstractController
 {
     public function index(): View

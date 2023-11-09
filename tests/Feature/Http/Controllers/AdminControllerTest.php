@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Tests\Helpers\UserHelper;
 use Tests\TestCase;
 
+/**
+ * @covers \App\Http\Controllers\AdminController
+ */
 final class AdminControllerTest extends TestCase
 {
     public function testCanViewAdminPage(): void
@@ -23,10 +26,8 @@ final class AdminControllerTest extends TestCase
     public function testRedirectsToLoginWhenNotLoggedIn(): void
     {
         $this
-            ->followingRedirects()
             ->get(route('admin.index'))
-            ->assertStatus(Response::HTTP_OK)
-            ->assertViewIs('auth.login')
+            ->assertRedirectToRoute('login')
         ;
     }
 }
