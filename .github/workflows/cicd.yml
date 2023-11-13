@@ -54,3 +54,64 @@ jobs:
 
             -   name: "Run PHPUnit"
                 run: vendor/bin/phpunit
+
+    build:
+        name: "Build"
+        runs-on: ubuntu-latest
+        needs: qa
+        if: github.ref == 'refs/heads/master'
+
+        steps:
+            -   name: "Checkout"
+                uses: actions/checkout@v4
+
+            -   name: "Create git commit file"
+                run: git rev-parse HEAD > commit.txt
+
+            -   name: "Set docker meta"
+                id: meta
+                uses: docker/metadata-action@v4
+                with:
+                    images: "ghcr.io/jesperbeisner/entspannung-ostsee"
+
+            -   name: "Login to image repository"
+                uses: docker/login-action@v2
+                with:
+                    registry: "ghcr.io"
+                    username: ${{ github.actor }}
+                    password: ${{ secrets.GHCR_TOKEN }}
+
+            -   name: "Build and push"
+                uses: docker/build-push-action@v3
+                with:
+                    context: .
+                    file: ".docker/prod/Dockerfile"
+                    push: true
+                    tags: ${{ steps.meta.outputs.tags }}
+                    labels: ${{ steps.meta.outputs.labels }}
+
+    deploy:
+        name: "Deploy"
+        runs-on: ubuntu-latest
+        needs: build
+        if: github.ref == 'refs/heads/master'
+
+        steps:
+            -   name: "Deploy"
+                uses: appleboy/ssh-action@v1.0.0
+                with:
+                    host: ${{ secrets.HOST }}
+                    username: ${{ secrets.USERNAME }}
+                    password: ${{ secrets.PASSWORD }}
+                    script: |
+                        cd /var/www/entspannung-ostsee
+                        docker rm -f entspannung-ostsee
+                        docker rmi -f ghcr.io/jesperbeisner/entspannung-ostsee:master
+                        docker run -d -p 9999:8080 --env-file .env --name entspannung-ostsee ghcr.io/jesperbeisner/entspannung-ostsee:master
+                        docker exec entspannung-ostsee touch database/database/db.sqlite
+                        docker exec entspannung-ostsee php artisan migrate --force
+                        docker exec entspannung-ostsee php artisan optimize
+                        docker exec entspannung-ostsee php artisan config:cache
+                        docker exec entspannung-ostsee php artisan route:cache
+                        docker exec entspannung-ostsee php artisan view:cache
+                        docker exec entspannung-ostsee php artisan app:create-user test@example.com Password123
